@@ -31,7 +31,11 @@ Ouvrir le projet dans UiPath Studio, vérifier que `villes.xlsx` est fermé, pui
 
 ## Difficultés rencontrées
 
-[À écrire avec vos mots. Par exemple : ce qui n'a pas marché avec Use Excel File et pourquoi vous êtes passée aux activités Workbook ; la portée des variables ; la sortie de HTTP Request qui était un objet et non du texte.]
+Lecture du fichier Excel. Au début, j'ai utilisé l'activité Use Excel File, mais le robot n'arrivait pas à ouvrir la feuille. Cette activité a besoin de l'application Excel pour fonctionner, et la version d'Excel installée sur mon ordinateur n'était pas activée. J'ai donc utilisé Read Range Workbook, qui lit le fichier directement sans ouvrir Excel. Ça a réglé le problème.
+
+Portée des variables. J'ai eu plusieurs fois l'erreur « is not declared ». En fait, mes variables avaient été créées à l'intérieur d'un bloc et n'étaient pas visibles ailleurs. J'ai appris à vérifier la portée dans le Data Manager et à bien placer mes activités.
+
+Réponse de l'API. Quand j'ai affiché la réponse de HTTP Request, j'obtenais « HttpResponseSummary » au lieu des données. La sortie était un objet et non du texte. J'ai utilisé .TextContent pour récupérer le JSON et extraire la température.
 
 ## Auteure
 
